@@ -1,4 +1,4 @@
-# Job Sites parser
+# Job Sites Parser
 the program fetch info from hh.ru and superjob.ru and get salary statistics
 
 ## System requirements:
