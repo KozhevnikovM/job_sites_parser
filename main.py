@@ -1,17 +1,17 @@
-from dotenv import load_dotenv
+# coding=utf-8
 from head_hunter import HeadHunter
 from super_job import SuperJob
 from draw import draw_table
 
 
 if __name__ == '__main__':
-    load_dotenv()
     hh_stats = []
     job_stats = []
-
+    search_template = 'программист'
     languages = ['python', 'java', 'ruby', 'javascript']
+
     for language in languages:
-        params = {'text': f'программист {language}', 'area': 1, 'period': 30}
+        params = {'text': f'{search_template} {language}', 'area': 1, 'period': 30}
         hunter = HeadHunter(params)
 
         lang_statistic = {
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     for language in languages:
         params = {'t': 4,
                   'catalogues': 48,
-                  'keyword': f'программист {language}',
+                  'keyword': f'{search_template} {language}',
                   }
         super_job = SuperJob(params)
 
