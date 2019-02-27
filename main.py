@@ -1,5 +1,5 @@
 from head_hunter import HeadHunter
-from super_job import SuperJob
+import super_job
 from draw import draw_table
 from dotenv import load_dotenv
 
@@ -12,19 +12,19 @@ if __name__ == '__main__':
     moscow = 1
     one_month = 30
 
-    for language in languages:
-        params = {'text': f'{search_template} {language}', 'area': moscow, 'period': one_month}
-        hunter = HeadHunter(params)
-
-        lang_statistic = {
-                        language: {
-                            'vacancies_found': hunter.found,
-                            'vacancies_processed': hunter.get_average_salary()['vacancies_processed'],
-                            'average_salary': hunter.get_average_salary()['average_salary']
-                            }
-                        }
-        hh_stats.append(lang_statistic)
-    print(draw_table(hh_stats, title="HeadHunter Statistic"))
+    # for language in languages:
+    #     params = {'text': f'{search_template} {language}', 'area': moscow, 'period': one_month}
+    #     hunter = HeadHunter(params)
+    #
+    #     lang_statistic = {
+    #                     language: {
+    #                         'vacancies_found': hunter.found,
+    #                         'vacancies_processed': hunter.get_average_salary()['vacancies_processed'],
+    #                         'average_salary': hunter.get_average_salary()['average_salary']
+    #                         }
+    #                     }
+    #     hh_stats.append(lang_statistic)
+    # print(draw_table(hh_stats, title="HeadHunter Statistic"))
 
     print()
 
@@ -36,13 +36,12 @@ if __name__ == '__main__':
                   'catalogues': programming_directory_section,
                   'keyword': f'{search_template} {language}',
                   }
-        super_job = SuperJob(params)
+        super_job_response = super_job.request_super_job(params)
 
         language_statistics = {language: {
-                                    'vacancies_found': super_job.total,
-                                    'vacancies_processed': super_job.get_average_salary()['vacancies_processed'],
-                                    'average_salary': super_job.get_average_salary()['average_salary']
-                                    }
-                        }
+                                    'vacancies_found': super_job_response['total'],
+                                    'vacancies_processed': super_job.get_average_salary(params)['vacancies_processed'],
+                                    'average_salary': super_job.get_average_salary(params)['average_salary']
+                                    }}
         job_stats.append(language_statistics)
     print(draw_table(job_stats, title='SuperJob Statistic'))
