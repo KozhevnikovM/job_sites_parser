@@ -2,9 +2,10 @@
 from head_hunter import HeadHunter
 from super_job import SuperJob
 from draw import draw_table
-
+from dotenv import load_dotenv
 
 if __name__ == '__main__':
+    load_dotenv()
     hh_stats = []
     job_stats = []
     search_template = 'программист'

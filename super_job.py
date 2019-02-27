@@ -1,9 +1,8 @@
 import requests, os
-from dotenv import load_dotenv
 from itertools import islice, count
 from pprint import pprint
 
-load_dotenv()
+
 API_KEY=os.getenv('API_KEY')
 
 
