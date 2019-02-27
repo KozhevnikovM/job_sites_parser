@@ -26,9 +26,8 @@ class HeadHunter:
         if not nums:
             nums = self.found
         vacancies = self.fetch_all_pages_items()
-        salary_list = []
-        for vacancy in islice(vacancies, nums):
-            if self.predict_rub_salary(vacancy):
-                salary_list.append(self.predict_rub_salary(vacancy))
+        salary_list = [predict_rub_salary(vacancy)
+                       for vacancy in islice(vacancies, nums)
+                       if predict_rub_salary(vacancy)]
         return {'average_salary': round(sum(salary_list) / len(salary_list), 2),
                 'vacancies_processed': len(salary_list)}

@@ -30,12 +30,10 @@ class SuperJob:
                 break
             yield from page_data['objects']
 
-
     def get_average_salary(self):
         vacancies = self.fetch_all_pages()
-        salary_list = []
-        for vacancy in vacancies:
-            if self.predict_rub_salary(vacancy):
-                salary_list.append(self.predict_rub_salary(vacancy))
+        salary_list = [predict_rub_salary(vacancy)
+                       for vacancy in vacancies
+                       if predict_rub_salary(vacancy)]
         return {'average_salary': round(sum(salary_list) / len(salary_list), 2),
                 'vacancies_processed': len(salary_list)}

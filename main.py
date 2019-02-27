@@ -1,4 +1,3 @@
-# coding=utf-8
 from head_hunter import HeadHunter
 from super_job import SuperJob
 from draw import draw_table
@@ -10,9 +9,11 @@ if __name__ == '__main__':
     job_stats = []
     search_template = 'программист'
     languages = ['python', 'java', 'ruby', 'javascript']
+    moscow = 1
+    one_month = 30
 
     for language in languages:
-        params = {'text': f'{search_template} {language}', 'area': 1, 'period': 30}
+        params = {'text': f'{search_template} {language}', 'area': moscow, 'period': one_month}
         hunter = HeadHunter(params)
 
         lang_statistic = {
@@ -27,9 +28,12 @@ if __name__ == '__main__':
 
     print()
 
+    moscow = 4
+    programming_directory_section = 48
+
     for language in languages:
-        params = {'t': 4,
-                  'catalogues': 48,
+        params = {'t': moscow,
+                  'catalogues': programming_directory_section,
                   'keyword': f'{search_template} {language}',
                   }
         super_job = SuperJob(params)
