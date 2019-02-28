@@ -1,5 +1,4 @@
 import requests
-from pprint import pprint
 from itertools import count, islice
 from common import predict_rub_salary
 
