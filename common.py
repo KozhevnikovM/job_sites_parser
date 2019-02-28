@@ -1,9 +1,9 @@
-def predict_rub_salary(vacancy):
-    if not vacancy['currency'] == 'rub':
+def predict_rub_salary(salary, currency_key, currency_code, from_key, to_key):
+    if not salary[currency_key] == currency_code:
         return None
-    if vacancy['payment_from'] and vacancy['payment_to']:
-        return (vacancy['payment_from'] + vacancy['payment_to']) / 2
-    if vacancy['payment_from']:
-        return vacancy['payment_from'] * 1.2
-    if vacancy['payment_to']:
-        return vacancy['payment_to'] * 0.8
+    if salary[from_key] and salary[to_key]:
+        return (salary[from_key] + salary[to_key]) / 2
+    if salary[from_key]:
+        return salary[from_key] * 1.2
+    if salary[to_key]:
+        return salary[to_key] * 0.8
